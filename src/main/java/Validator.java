@@ -1,3 +1,6 @@
+/**
+ * Class to validate Russian federation INN
+ */
 public class Validator {
 
     private final static String INCORRECT_INN_LENGTH_MESSAGE = "Inn length must be 10 or 12 symbols";
@@ -6,29 +9,33 @@ public class Validator {
     private final static String INCORRECT_TEN_DIGITS_INN_MESSAGE = "10 digits inn is not valid";
     private final static String INCORRECT_TWELVE_DIGITS_INN_MESSAGE = "12 digits inn is not valid";
 
+    /**
+     * Method to validate Inn
+     *
+     * @param inn inn to validate
+     * @throws IllegalStateException thrown when inn is not correct
+     */
     public void validate(String inn) throws IllegalStateException {
-        try {
-            if (inn.length() == 10) {
-                containsTenDigits(inn);
-                validateTenDigits(inn);
-            } else {
-                if (inn.length() == 12) {
-                    containsTwelveDigits(inn);
-                    validateTwelveDigits(inn);
-                } else
-                    throw new IllegalStateException(INCORRECT_INN_LENGTH_MESSAGE);
-            }
-        } catch (IllegalStateException e) {
-            throw e;
+        if (inn.length() == 10) {
+            containsTenDigits(inn);
+            validateTenDigits(inn);
+        } else {
+            if (inn.length() == 12) {
+                containsTwelveDigits(inn);
+                validateTwelveDigits(inn);
+            } else
+                throw new IllegalStateException(INCORRECT_INN_LENGTH_MESSAGE);
         }
     }
-    private void containsTenDigits(String inn){
-        if(!inn.matches("\\d{10}")){
+
+    private void containsTenDigits(String inn) throws IllegalStateException {
+        if (!inn.matches("\\d{10}")) {
             throw new IllegalStateException(INCORRECT_TEN_SYMBOLS_MESSAGE);
         }
     }
-    private void containsTwelveDigits(String inn){
-        if(!inn.matches("\\d{12}")){
+
+    private void containsTwelveDigits(String inn) throws IllegalStateException {
+        if (!inn.matches("\\d{12}")) {
             throw new IllegalStateException(INCORRECT_TWELVE_SYMBOLS_MESSAGE);
         }
     }
