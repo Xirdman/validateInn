@@ -2,7 +2,7 @@
  * Class to validate Russian federation INN
  */
 public class Validator {
-    private final int[] weightTenDigits = {3, 7, 2, 4, 10, 3, 5, 9, 4, 6, 8, 0};
+    private final int[] WEIGHT = {3, 7, 2, 4, 10, 3, 5, 9, 4, 6, 8, 0};
 
     private final static String INCORRECT_INN_LENGTH_MESSAGE = "Inn length must be 10 or 12 symbols";
     private final static String INCORRECT_TEN_SYMBOLS_MESSAGE = "Inn must contain 10 digits, not anything else";
@@ -68,7 +68,7 @@ public class Validator {
     private int getControlSumFromTenDigitsInn(String inn) {
         int sum = 0;
         for (int i = 0; i < inn.length(); i++) {
-            sum += Character.getNumericValue(inn.charAt(i)) * weightTenDigits[i + 2];
+            sum += Character.getNumericValue(inn.charAt(i)) * WEIGHT[i + 2];
         }
         return sum;
     }
@@ -76,7 +76,7 @@ public class Validator {
     private int getControlSum1FromTwelveDigitsInn(String inn) {
         int sum = 0;
         for (int i = 0; i < inn.length() - 1; i++) {
-            sum += Character.getNumericValue(inn.charAt(i)) * weightTenDigits[i + 1];
+            sum += Character.getNumericValue(inn.charAt(i)) * WEIGHT[i + 1];
         }
         return sum;
     }
@@ -84,7 +84,7 @@ public class Validator {
     private int getControlSum2FromTwelveDigitsInn(String inn) {
         int sum = 0;
         for (int i = 0; i < inn.length(); i++) {
-            sum += Character.getNumericValue(inn.charAt(i)) * weightTenDigits[i];
+            sum += Character.getNumericValue(inn.charAt(i)) * WEIGHT[i];
         }
         return sum;
     }
