@@ -22,7 +22,7 @@ public class TestClass {
 
     @Test
     public void testValidTwelveDigitInn() {
-        validator.validate("000000000000");
+        validator.validate("124631235399");
     }
 
     @Test

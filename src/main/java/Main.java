@@ -4,7 +4,7 @@
  * @author Matveev Alexander
  */
 public class Main {
-    private static final String INN = "000000000b";
+    private static final String INN = "1234567894";
 
     /**
      * Main method of program
